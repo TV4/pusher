@@ -15,4 +15,29 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// handle if console is not defined (IE browsers)
+if (!window.console) {console = {log: function () {}}; }
+console.debug = console.debug || function () {};
+console.warn = console.warn || function () {};
+console.info = console.info || function () {};
+
+
+pusher = {
+  publish: function(pubnubChannel, message) {
+    if(typeof pubnubChannel != 'undefined') {
+      console.log(new Date());
+      console.log(message);
+      console.log(pubnubChannel);
+
+      PUBNUB.publish({
+        channel: pubnubChannel,
+        message: message
+      });
+    }
+  }
+}
+
+
+$(function(){
+  $(document).foundation();
+});

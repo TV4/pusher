@@ -1,1 +1,38 @@
-%h1 Flashlistan
+%h1 Listing flash_messages
+
+%table
+  %tr
+    %th Message
+    %th Site
+    %th Type
+    %th
+    %th
+    %th
+    %th
+
+  - @flash_messages.each do |flash_message|
+    %tr
+      %td= flash_message.message
+      %td= flash_message.site
+      %td= flash_message.message_type
+      %td= link_to 'Show', flash_message
+      %td= link_to 'Edit', edit_flash_message_path(flash_message)
+      %td= link_to 'Destroy', flash_message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        :javascript
+          he = { t: '#{flash_message.flash_type}', m: '#{flash_message.message}'}
+
+        .button{ onclick: "publishMessage(this,'#{flash_message.channel}' ,he)"}
+          = 'Publicera'
+
+
+%br
+
+= link_to 'New Flash message', new_flash_message_path
+
+#pubnub{ origin: ENV['PUBNUB_HOST'], ssl: 'off',
+  pub: { key: ENV['PUBNUB_PUBLISH_KEY'] },
+  sub: { key: ENV['PUBNUB_SUBSCRIBE_KEY'] } }
+
+= javascript_include_tag "//cdn.pubnub.com/pubnub-3.5.4.min.js"
+

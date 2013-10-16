@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Tvplay:
+  = @flash_message.message
+%p
+  %b Tv4:
+  = @flash_message.site
+%p
+  %b Type:
+  = @flash_message.message_type
+
+= link_to 'Edit', edit_flash_message_path(@flash_message)
+\|
+= link_to 'Back', flash_messages_path

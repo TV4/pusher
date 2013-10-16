@@ -23,7 +23,7 @@ describe FlashMessagesController do
   # This should return the minimal set of attributes required to create a valid
   # FlashMessage. As you add validations to FlashMessage, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "tvplay" => "MyString" } }
+  let(:valid_attributes) { { "message" => "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -35,14 +35,6 @@ describe FlashMessagesController do
       flash_message = FlashMessage.create! valid_attributes
       get :index, {}, valid_session
       assigns(:flash_messages).should eq([flash_message])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested flash_message as @flash_message" do
-      flash_message = FlashMessage.create! valid_attributes
-      get :show, {:id => flash_message.to_param}, valid_session
-      assigns(:flash_message).should eq(flash_message)
     end
   end
 
@@ -77,7 +69,7 @@ describe FlashMessagesController do
 
       it "redirects to the created flash_message" do
         post :create, {:flash_message => valid_attributes}, valid_session
-        response.should redirect_to(FlashMessage.last)
+        response.should redirect_to(flash_messages_path)
       end
     end
 
@@ -85,14 +77,14 @@ describe FlashMessagesController do
       it "assigns a newly created but unsaved flash_message as @flash_message" do
         # Trigger the behavior that occurs when invalid params are submitted
         FlashMessage.any_instance.stub(:save).and_return(false)
-        post :create, {:flash_message => { "tvplay" => "invalid value" }}, valid_session
+        post :create, {:flash_message => { "message" => "invalid value" }}, valid_session
         assigns(:flash_message).should be_a_new(FlashMessage)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         FlashMessage.any_instance.stub(:save).and_return(false)
-        post :create, {:flash_message => { "tvplay" => "invalid value" }}, valid_session
+        post :create, {:flash_message => { "message" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +98,8 @@ describe FlashMessagesController do
         # specifies that the FlashMessage created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        FlashMessage.any_instance.should_receive(:update).with({ "tvplay" => "MyString" })
-        put :update, {:id => flash_message.to_param, :flash_message => { "tvplay" => "MyString" }}, valid_session
+        FlashMessage.any_instance.should_receive(:update).with({ "message" => "MyString" })
+        put :update, {:id => flash_message.to_param, :flash_message => { "message" => "MyString" }}, valid_session
       end
 
       it "assigns the requested flash_message as @flash_message" do
@@ -119,7 +111,7 @@ describe FlashMessagesController do
       it "redirects to the flash_message" do
         flash_message = FlashMessage.create! valid_attributes
         put :update, {:id => flash_message.to_param, :flash_message => valid_attributes}, valid_session
-        response.should redirect_to(flash_message)
+        response.should redirect_to(flash_messages_path)
       end
     end
 
@@ -128,7 +120,7 @@ describe FlashMessagesController do
         flash_message = FlashMessage.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         FlashMessage.any_instance.stub(:save).and_return(false)
-        put :update, {:id => flash_message.to_param, :flash_message => { "tvplay" => "invalid value" }}, valid_session
+        put :update, {:id => flash_message.to_param, :flash_message => { "message" => "invalid value" }}, valid_session
         assigns(:flash_message).should eq(flash_message)
       end
 
@@ -136,7 +128,7 @@ describe FlashMessagesController do
         flash_message = FlashMessage.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         FlashMessage.any_instance.stub(:save).and_return(false)
-        put :update, {:id => flash_message.to_param, :flash_message => { "tvplay" => "invalid value" }}, valid_session
+        put :update, {:id => flash_message.to_param, :flash_message => { "message" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

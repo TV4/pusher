@@ -6,10 +6,6 @@ class FlashMessagesController < ApplicationController
     @flash_messages = FlashMessage.all
   end
 
-  # GET /flash_messages/1
-  def show
-  end
-
   # GET /flash_messages/new
   def new
     @flash_message = FlashMessage.new

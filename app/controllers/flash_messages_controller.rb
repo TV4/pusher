@@ -2,13 +2,11 @@ class FlashMessagesController < ApplicationController
   before_action :set_flash_message, only: [:show, :edit, :update, :destroy]
 
   # GET /flash_messages
-  # GET /flash_messages.json
   def index
     @flash_messages = FlashMessage.all
   end
 
   # GET /flash_messages/1
-  # GET /flash_messages/1.json
   def show
   end
 
@@ -22,42 +20,34 @@ class FlashMessagesController < ApplicationController
   end
 
   # POST /flash_messages
-  # POST /flash_messages.json
   def create
     @flash_message = FlashMessage.new(flash_message_params)
 
     respond_to do |format|
       if @flash_message.save
-        format.html { redirect_to @flash_message, notice: 'Flash message was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @flash_message }
+        format.html { redirect_to flash_messages_path, notice: 'Meddelande sparades.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @flash_message.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /flash_messages/1
-  # PATCH/PUT /flash_messages/1.json
   def update
     respond_to do |format|
       if @flash_message.update(flash_message_params)
-        format.html { redirect_to @flash_message, notice: 'Flash message was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to flash_messages_path, notice: 'Meddelande uppdaterades' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @flash_message.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /flash_messages/1
-  # DELETE /flash_messages/1.json
   def destroy
     @flash_message.destroy
     respond_to do |format|
       format.html { redirect_to flash_messages_url }
-      format.json { head :no_content }
     end
   end
 

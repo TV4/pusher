@@ -2,8 +2,8 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Pusher"
-      %meta{:content => content_for?(:description) ? yield(:description) : "Pusher", :name => "description"}
+      %title= "Pusher"
+      %meta{:content => "Pusher", :name => "description"}
         = stylesheet_link_tag "application", :media => "all"
         = csrf_meta_tags
         = yield(:head)

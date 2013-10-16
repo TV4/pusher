@@ -6,14 +6,19 @@
         - @flash_message.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :message
-    = f.text_field :message
-  .field
-    = f.label :site
-    = f.select :site, options_for_select(FlashMessage::Site,f.object.site)
-  .field
-    = f.label :message_type
-    = f.select :message_type, options_for_select(FlashMessage::Options,f.object.message_type)
+  %fieldset
+    %legend= "Meddelande"
+    .large-8.columns
+      .row
+        = f.label :message
+        = f.text_field :message
+    .large-2.columns
+      .field
+        = f.label :site
+        = f.select :site, options_for_select(FlashMessage::Site,f.object.site)
+    .large-2.columns
+      .field
+        = f.label :message_type
+        = f.select :message_type, options_for_select(FlashMessage::Options,f.object.message_type)
   .actions
-    = f.submit 'Save'
+    = f.submit 'Spara', class: 'button large right'

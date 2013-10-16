@@ -1,7 +1,8 @@
-%h1 Editing flash_message
+.row
+  %h1 Redigera meddelande
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Show', @flash_message
-\|
-= link_to 'Back', flash_messages_path
+  %hr
+
+  = link_to 'Tillbaka', flash_messages_path, class: 'button right'

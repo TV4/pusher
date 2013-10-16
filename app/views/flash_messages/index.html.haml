@@ -12,7 +12,7 @@
         %th
         %th
 
-      - @flash_messages.each do |flash_message|
+      - @flash_messages.each_with_index do |flash_message, index|
         %tbody
           %tr
             %td= flash_message.message
@@ -21,10 +21,7 @@
             %td= link_to 'Editera', edit_flash_message_path(flash_message), class: 'button'
             %td= link_to 'Ta bort', flash_message, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button alert'
             %td
-              :javascript
-                he = { t: '#{flash_message.flash_type}', m: '#{flash_message.message}'}
-
-              .button.green{ onclick: "publishMessage(this,'#{flash_message.channel}' ,he)"}
+              .button.green{ onclick: "publishMessage(this,'#{flash_message.channel}' ,{ t: '#{flash_message.flash_type}', m: '#{flash_message.message}'})", id: "publish_button_#{index}"}
                 = 'Publicera'
 
 

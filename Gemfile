@@ -14,9 +14,6 @@ gem 'zurb-foundation'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 1.2'
 
-gem 'sidekiq', '~> 2.15'
-gem 'sinatra', '~> 1.4'
-
 
 gem 'thin'
 

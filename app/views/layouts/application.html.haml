@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+      %title= content_for?(:title) ? yield(:title) : "Pusher"
+      %meta{:content => content_for?(:description) ? yield(:description) : "Pusher", :name => "description"}
+        = stylesheet_link_tag "application", :media => "all"
+        = csrf_meta_tags
+        = yield(:head)
+  %body{:class => "#{controller_name} #{action_name}"}
+    - if Rails.env != 'production'
+      %div{ class: "env-bar stripes #{Rails.env}" }= Rails.env
+    #container.container
+
+      %header
+        .row
+          = render 'layouts/navigation'
+          = render 'layouts/messages'
+      #main{:role => "main"}
+        .row
+          = yield
+
+    = javascript_include_tag "application"

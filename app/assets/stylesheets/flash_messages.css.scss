@@ -1,3 +1,40 @@
 // Place all the styles related to the FlashMessages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a {
+  &.edit {
+    background: #efefef;
+    color: #000;
+    border: 1px solid #ccc;
+
+    &:hover {
+      background: #ccc;
+      color: #000;
+    }
+  }
+}
+
+
+.publish {
+  background: #5da423;
+  border: 1px solid #457a1a;
+
+  &:hover {
+    background: #457a1a;
+  }
+}
+
+.new-message {
+  background: #f9edbe;
+  border: 1px solid #f5e08f;
+
+  &:hover {
+    background: #f3da78;
+    color: #666;
+  }
+}
+
+.secondary {
+  background: #e9e9e9;
+}

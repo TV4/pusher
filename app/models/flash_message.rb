@@ -1,5 +1,7 @@
 class FlashMessage < ActiveRecord::Base
 
+  default_scope { order(:site) }
+  
   Options = {error: "error", information: "information"}
   Site = {tv4: 'tv4', tv4play: 'tv4play'}
 

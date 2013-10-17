@@ -16,7 +16,7 @@
         %tbody
           %tr
             %td= flash_message.message
-            %td= flash_message.site
+            %td{class: flash_message.site}
             %td= flash_message.message_type
             %td= link_to 'Editera', edit_flash_message_path(flash_message), class: 'button edit'
             %td= link_to 'Ta bort', flash_message, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button alert'

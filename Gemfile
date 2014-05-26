@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.2'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.0'
 
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'compass-rails', '~> 1.1.7'
 gem 'sass-rails', '~> 4.0.0'
 gem 'haml-rails'
 
@@ -14,6 +14,7 @@ gem 'zurb-foundation'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 1.2'
 
+gem 'rails-i18n', '~> 4.0.0'
 
 gem 'thin'
 
